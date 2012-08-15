@@ -1,0 +1,30 @@
+admin_node:
+    pattern:  /
+    defaults: { _controller: "ACInst3Bundle:Node:index" }
+
+admin_node_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "ACInst3Bundle:Node:show" }
+
+admin_node_new:
+    pattern:  /new
+    defaults: { _controller: "ACInst3Bundle:Node:new" }
+
+admin_node_create:
+    pattern:  /create
+    defaults: { _controller: "ACInst3Bundle:Node:create" }
+    requirements: { _method: post }
+
+admin_node_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ACInst3Bundle:Node:edit" }
+
+admin_node_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ACInst3Bundle:Node:update" }
+    requirements: { _method: post }
+
+admin_node_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "ACInst3Bundle:Node:delete" }
+    requirements: { _method: post }
