@@ -20,9 +20,19 @@ class Node
     private $machine_name;
 
     /**
-     * @var string $target_controller
+     * @var string $mode
      */
-    private $target_controller;
+    private $mode;
+
+    /**
+     * @var string $target_entity
+     */
+    private $target_entity;
+
+    /**
+     * @var string $target_view
+     */
+    private $target_view;
 
     /**
      * @var array $target_params
@@ -39,7 +49,26 @@ class Node
      */
     private $title;
 
+    /**
+     * @var AltCloud\Instance3Bundle\Entity\Node
+     */
+    private $children;
 
+    /**
+     * @var AltCloud\Instance3Bundle\Entity\Node
+     */
+    private $parent;
+
+    /**
+     * @var AltCloud\Instance3Bundle\Entity\Site
+     */
+    private $site;
+
+    public function __construct()
+    {
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -71,23 +100,63 @@ class Node
     }
 
     /**
-     * Set target_controller
+     * Set mode
      *
-     * @param string $targetController
+     * @param string $mode
      */
-    public function setTargetController($targetController)
+    public function setMode($mode)
     {
-        $this->target_controller = $targetController;
+        $this->mode = $mode;
     }
 
     /**
-     * Get target_controller
+     * Get mode
      *
      * @return string 
      */
-    public function getTargetController()
+    public function getMode()
     {
-        return $this->target_controller;
+        return $this->mode;
+    }
+
+    /**
+     * Set target_entity
+     *
+     * @param string $targetEntity
+     */
+    public function setTargetEntity($targetEntity)
+    {
+        $this->target_entity = $targetEntity;
+    }
+
+    /**
+     * Get target_entity
+     *
+     * @return string 
+     */
+    public function getTargetEntity()
+    {
+        return $this->target_entity;
+    }
+
+    /**
+     * Set target_view
+     *
+     * @param string $targetView
+     */
+    public function setTargetView($targetView)
+    {
+        $this->target_view = $targetView;
+    }
+
+    /**
+     * Get target_view
+     *
+     * @return string 
+     */
+    public function getTargetView()
+    {
+        return $this->target_view;
     }
 
     /**
@@ -149,46 +218,7 @@ class Node
     {
         return $this->title;
     }
-    /**
-     * @var AltCloud\Instance3Bundle\Entity\Site
-     */
-    private $site;
 
-
-    /**
-     * Set site
-     *
-     * @param AltCloud\Instance3Bundle\Entity\Site $site
-     */
-    public function setSite(\AltCloud\Instance3Bundle\Entity\Site $site)
-    {
-        $this->site = $site;
-    }
-
-    /**
-     * Get site
-     *
-     * @return AltCloud\Instance3Bundle\Entity\Site 
-     */
-    public function getSite()
-    {
-        return $this->site;
-    }
-    /**
-     * @var AltCloud\Instance3Bundle\Entity\Node
-     */
-    private $children;
-
-    /**
-     * @var AltCloud\Instance3Bundle\Entity\Node
-     */
-    private $parent;
-
-    public function __construct()
-    {
-        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
     /**
      * Add children
      *
@@ -228,29 +258,56 @@ class Node
     {
         return $this->parent;
     }
-    /**
-     * @var string $mode
-     */
-    private $mode = 'forward';
-
 
     /**
-     * Set mode
+     * Set site
      *
-     * @param string $mode
+     * @param AltCloud\Instance3Bundle\Entity\Site $site
      */
-    public function setMode($mode)
+    public function setSite(\AltCloud\Instance3Bundle\Entity\Site $site)
     {
-        $this->mode = $mode;
+        $this->site = $site;
     }
 
     /**
-     * Get mode
+     * Get site
+     *
+     * @return AltCloud\Instance3Bundle\Entity\Site 
+     */
+    public function getSite()
+    {
+        return $this->site;
+    }
+    
+    /**
+     * @var string $target_controller
+     */
+    private $target_controller;
+
+    /**
+     * Set target_controller
+     *
+     * @param string $targetController
+     */
+    public function setTargetController($targetController)
+    {
+    	$targetparams_array = explode(':',$targetController);
+    	
+        $this->target_entity = $targetparams_array[0].':'.$targetparams_array[1];
+        $this->target_view = $targetparams_array[2];
+    }
+
+    /**
+     * Get target_controller
      *
      * @return string 
      */
-    public function getMode()
+    public function getTargetController()
     {
-        return $this->mode;
+    	if($this->target_entity && $this->target_entity != null)
+	        return $this->target_entity.':'.$this->target_view;
+	    else
+	        return $this->target_view;
     }
+    
 }

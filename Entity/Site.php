@@ -151,4 +151,14 @@ class Site
     {
         return $this->entrynode;
     }
+
+    /**
+     * Remove nodes
+     *
+     * @param \AltCloud\Instance3Bundle\Entity\Node $nodes
+     */
+    public function removeNode(\AltCloud\Instance3Bundle\Entity\Node $nodes)
+    {
+        $this->nodes->removeElement($nodes);
+    }
 }
