@@ -1,4 +1,17 @@
+{% if displayoptions.showmorelink is defined %}	
+	{% set showmorelink 		= displayoptions.showmorelink %}
+{% else %}
+	{% set showmorelink 		= false %}
+{% endif %}
+
+{% if displayoptions.enclosingtag is defined %}	
+	{% set enclosingtag 		= displayoptions.enclosingtag %}
+{% else %}
+	{% set enclosingtag 		= 'div' %}
+{% endif %}
+
 {% for listnode in nodes %}
+<{{enclosingtag}} id="{{listnode.machinename}}">
 	{% if listnode.label %}
 		<h1>{{listnode.title}}</h1>
 		{% if listnode.targetentity is defined and listnode.targetentity  %}
@@ -9,8 +22,12 @@
 				{% include "ACInst3Bundle:Node:displayPartial.html.twig" %}
 			</p>
 		{% endif %}
+
+        {% if showmorelink %}
 		<p>
 			<a href="{{ path('node_show', { 'mname': listnode.machinename }) }}">More . . .</a>
 		</p>
+		{% endif %}
 	{% endif %}
+</{{enclosingtag}}>
 {% endfor %}
