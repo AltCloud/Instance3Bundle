@@ -16,7 +16,8 @@
 		<h1>{{listnode.title}}</h1>
 		{% if listnode.targetentity is defined and listnode.targetentity  %}
 			<p>
-			{% set controller = listnode.targetentity ~ ":renderPartial" %}
+			{# set controller = listnode.targetentity ~ ":renderPartial" #}
+			{% set controller = listnode.targetcontroller %}
 			{% set controllervars = listnode.targetparams|unserialize %}
 			{% set displayoptions = {'showtitle':false} %}
 				{% include "ACInst3Bundle:Node:displayPartial.html.twig" %}
