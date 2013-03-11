@@ -12,16 +12,16 @@
 
 {% for listnode in nodes %}
 <{{enclosingtag}} id="{{listnode.machinename}}">
-	{% if listnode.label %}
-		<h1>{{listnode.title}}</h1>
+		{% if listnode.title %}
+			<h1>{{listnode.title}}</h1>
+		{% endif %}
 		{% if listnode.targetentity is defined and listnode.targetentity  %}
-			<p>
 			{# set controller = listnode.targetentity ~ ":renderPartial" #}
 			{% set controller = listnode.targetcontroller %}
 			{% set controllervars = listnode.targetparams|unserialize %}
 			{% set displayoptions = {'showtitle':false} %}
+			<!-- Controller: {{ controller }} / Vars: {{controllervars }} -->
 				{% include "ACInst3Bundle:Node:displayPartial.html.twig" %}
-			</p>
 		{% endif %}
 
         {% if showmorelink %}
@@ -29,6 +29,5 @@
 			<a href="{{ path('node_show', { 'mname': listnode.machinename }) }}">More . . .</a>
 		</p>
 		{% endif %}
-	{% endif %}
 </{{enclosingtag}}>
 {% endfor %}

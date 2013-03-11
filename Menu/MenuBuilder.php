@@ -14,7 +14,7 @@ class MenuBuilder extends ContainerAware
     public function MainMenu(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
-        $menu->setCurrentUri($this->container->get('request')->getRequestUri());
+        //$menu->setCurrentUri($this->container->get('request')->getRequestUri());
         
         $em = $this->container->get('doctrine.orm.entity_manager');
 		$repository = $em->getRepository('ACInst3Bundle:Node');
