@@ -1,6 +1,6 @@
 {
     "name": "altcloud/instance3bundle",
-    "description": "",
+    "description": "The Instance3 Bundle is a Bundle for the Symfony2 framework, containing the basic CMS functionality of this 3rd version of the Instance Content Management Framework",
     "require": {
         "php": ">=5.3.0"
     },
