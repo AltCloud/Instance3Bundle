@@ -1,3 +1,14 @@
+{% if displayoptions.showtitle is defined %}	
+	{% set showtitle 		= displayoptions.showtitle %}
+{% else %}
+	{% set showtitle 		= true %}
+{% endif %}
+{% if displayoptions.titletag is defined %}	
+	{% set titletag 		= displayoptions.titletag %}
+{% else %}
+	{% set titletag 		= 'h1' %}
+{% endif %}
+
 {% if displayoptions.showmorelink is defined %}	
 	{% set showmorelink 		= displayoptions.showmorelink %}
 {% else %}
@@ -12,10 +23,12 @@
 
 {% for listnode in nodes %}
 <{{enclosingtag}} id="{{listnode.machinename}}">
-		{% if listnode.title %}
-			<h1>{{listnode.title}}</h1>
+
+		{% if showtitle and listnode.title %}
+			<{{ titletag }}>{{ listnode.title }}</{{ titletag }}>
 		{% endif %}
 		{% if listnode.targetentity is defined and listnode.targetentity  %}
+			<p>
 			{# set controller = listnode.targetentity ~ ":renderPartial" #}
 			{% set controller = listnode.targetcontroller %}
 			{% set controllervars = listnode.targetparams|unserialize %}
