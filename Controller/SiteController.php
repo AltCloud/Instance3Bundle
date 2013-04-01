@@ -20,7 +20,7 @@ class SiteController extends Controller
 	public function entryAction($url = false)
 	{
 		if(!$url)
-			$url = 'fullfilliant.org';
+			$url = $_SERVER['SERVER_NAME'];
 
 		$site = $this->getDoctrine()
 			->getRepository('ACInst3Bundle:Site')

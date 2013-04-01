@@ -310,4 +310,27 @@ class Node
 	        return $this->target_view;
     }
     
+
+    /**
+     * Add children
+     *
+     * @param \AltCloud\Instance3Bundle\Entity\Node $children
+     * @return Node
+     */
+    public function addChildren(\AltCloud\Instance3Bundle\Entity\Node $children)
+    {
+        $this->children[] = $children;
+    
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param \AltCloud\Instance3Bundle\Entity\Node $children
+     */
+    public function removeChildren(\AltCloud\Instance3Bundle\Entity\Node $children)
+    {
+        $this->children->removeElement($children);
+    }
 }
