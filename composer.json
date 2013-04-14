@@ -8,5 +8,6 @@
         "psr-0": {
             "AltCloud\\Instance3Bundle\\ACInst3Bundle": ""
         }
-    }
+    },
+    "target-dir": "AltCloud/Instance3Bundle/ACInst3Bundle"
 }
