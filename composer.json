@@ -3,12 +3,5 @@
     "description": "The Instance3 Bundle is a Bundle for the Symfony2 framework, containing the basic CMS functionality of this 3rd version of the Instance Content Management Framework",
     "require": {
         "php": ">=5.3.0"
-    },
-    "type": "symfony-bundle",
-    "autoload": {
-        "psr-0": {
-            "AltCloud\\Bundle\\Instance3Bundle": ""
-        }
-    },
-    "target-dir": "AltCloud/Bundle/Instance3Bundle"
+    }
 }
