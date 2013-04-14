@@ -6,7 +6,7 @@
     },
     "autoload": {
         "psr-0": {
-            "AltCloud\\Instance3Bundle\\": ""
+            "AltCloud\\Instance3Bundle\\ACInst3Bundle": ""
         }
     }
 }
